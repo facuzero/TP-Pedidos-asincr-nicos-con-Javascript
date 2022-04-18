@@ -26,7 +26,7 @@
               <h3>Titulo</h3>
               <h4><%= pelicula.title%> </h4>
               <a href="/detail/<%= pelicula.id %> ">Detalle</a>
-              <div onclick="getPelicula('<%= pelicula.id%>')" style="cursor: pointer;">
+              <div class="fav" onclick="getPelicula('<%= pelicula.id%>')" style="cursor: pointer;">
                 <i class="fa-solid fa-star favoritas"></i>
                 <small>Agregar a favoritos</small>
               </div>

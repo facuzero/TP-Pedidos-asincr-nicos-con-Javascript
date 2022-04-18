@@ -1,19 +1,22 @@
-window.onload = () => {
+
   const app = document.getElementById("root");
   const container = document.createElement("div");
   container.setAttribute("class", "container");
   app.appendChild(container);
+  const $fav = document.querySelector('.fav')
   
     const getPelicula = async (id) => {
       try {
         const response = await fetch(`api/movies/${id}`);
         const peliculas = await response.json();
-        
+              
         //Codigo que debemos usar para mostrar los datos en el frontend
         let data = peliculas.data;
-        console.log(data)
-
+        let favoritas = []
+        //console.log(data)
+        
         data.forEach((movie) => {
+          
           const card = document.createElement("div");
           card.setAttribute("class", "card");
 
@@ -35,10 +38,17 @@ window.onload = () => {
             card.appendChild(genero);
           }
           card.appendChild(duracion);
+          
+          favoritas.push(movie)
         });
+        
       } catch (error) {
-      console.log(error)
+        console.log(error)
       }
-    } 
-  getPelicula();
-};
+      console.log(this.favoritas)
+      console.log("FAVORITAS")
+      localStorage.setItem('peliculasFavoritas', this.favoritas)
+    }
+    $fav.addEventListener('load', () => {
+      localStorage.getItem('peliculasFavoritas')
+    })
